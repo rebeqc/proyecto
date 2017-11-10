@@ -25,7 +25,7 @@
     <div id='map'></div>
 	  
     
-    <script src="js/Cantones2014wgs84.js"  type="text/javascript"></script>
+    <script src="js/prioritarioCon.js"  type="text/javascript"></script>
 
     <script>
       var mapa = L.map('map').setView([9.5, -84], 8);
@@ -80,14 +80,14 @@
 		           '#fee5d9';
       }	  
 	    
-      function infoPoblacion(feature, layer) {
+      function infoConservacion(feature, layer) {
 	var popupContent = "";
 	
-	if (feature.properties && feature.properties.NCANTON) {
-	  popupContent += "<br><b>Cantón:</b> " + feature.properties.NCANTON;	
+//	if (feature.properties && feature.properties.NCANTON) {
+//	  popupContent += "<br><b>Cantón:</b> " + feature.properties.NCANTON;	
 	
-	if (feature.properties && feature.properties.POB_2011_T) {
-	  popupContent += "<br><b>Densidad:</b> " + feature.properties.POB_2011_T;
+	if (feature.properties && feature.properties.SQ_KM) {
+	  popupContent += "<br><b>prioritarios:</b> " + feature.properties.SQ_KM;
 	 
      
 		} 
@@ -95,7 +95,7 @@
 	layer.bindPopup(popupContent);
       }	    	    
 	    
-      var dpoblacion = L.geoJson(poblacion, {
+      var conservacion = L.geoJson(conservacion, {
         style: function (feature) {
 	  return {
 	    weight: 2,
@@ -103,7 +103,7 @@
 	    color: 'white',
 	    dashArray: '3',
 	    fillOpacity: 0.7,		  
-            fillColor: color(feature.properties.POB_2011_T)
+            fillColor: color(feature.properties.SQ_KM)
           };
         },
 	      
